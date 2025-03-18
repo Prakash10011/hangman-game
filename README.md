@@ -1,25 +1,53 @@
-# Guess The Word Game (Hangman-style)
+Guess The Word Game :
 
-This is a simple "Guess The Word" game built using Flutter and state management with the `provider` package. The game is similar to the classic Hangman-style game, where players need to guess the letters of a hidden word. Players are given six attempts to guess the wrong letters before the game ends.
+Overview:
+This is a "Guess The Word" game built using Flutter with Provider for state management. The player tries to guess a hidden word by selecting letters from the alphabet. The game tracks wrong guesses and ends when the player guesses the word correctly or reaches the maximum allowed wrong guesses.
 
-## Features
-- Displays the word with guessed letters and underscores.
-- Tracks wrong guesses and limits the number of wrong attempts to 6.
-- Displays a keyboard with all letters of the alphabet.
-- The player can guess one letter at a time.
-- Shows a message when the game is over (win or loss).
-- Option to play again after finishing a game.
+Features:
+Displays the hidden word with underscores for unguessed letters
+Allows letter guessing with interactive buttons
+Tracks wrong guesses and shows remaining attempts
+Displays a win or loss message at the end of the game
+Provides a "Play Again" button to reset the game
 
-## Requirements
-- Flutter 2.0 or higher
-- Dart 2.12 or higher
+How It Works:
+Game Initialization:
+A random word is selected from a predefined list in GameProvider.
+The hidden word is shown with underscores representing unguessed letters.
 
-## Getting Started
+Guessing Letters:
 
-To run this project locally, follow these steps:
+Player taps a letter button → Letter is checked against the hidden word.
+If correct → Letter is revealed in the word.
+If wrong → Wrong guess count increases.
 
-1. **Clone this repository:**
+Game Over Conditions:
 
-   ```bash
-   git clone https://github.com/your-username/guess-the-word.git
-   cd guess-the-word
+Maximum of 6 wrong guesses allowed.
+If all letters are guessed → Player wins.
+If wrong guess limit is reached → Player loses.
+
+Game Reset:
+
+After a win or loss → "Play Again" button resets the game with a new word.
+
+Project Structure:
+Key Files:
+
+main.dart – Contains the main game UI and state interaction using Provider.
+game_provider.dart – Manages game state, word selection, and game logic.
+pubspec.yaml – Manages dependencies like provider.
+
+State Management:
+Provider is used for state management.
+setState() is replaced with notifyListeners() to update the UI dynamically.
+
+Changes Made:
+Implemented state management with Provider.
+Added win/loss tracking and feedback to the user.
+Enabled dynamic UI updates based on the current game state.
+
+Why These Changes:
+To create a responsive and interactive game using state management.
+To provide a smooth user experience with clear win/loss feedback.
+To enable easy extension and scalability with state separation.
